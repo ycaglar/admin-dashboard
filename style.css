@@ -45,7 +45,16 @@ h6 {
 
 /*Ç*/
 p {
-  width: clamp(45ch, 50%, 75ch);
+  /* width: clamp(45ch, 50%, 75ch); */
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 #root,
@@ -54,11 +63,231 @@ p {
 }
 
 /* CSS Reset: End */
+:root {
+  --theme-color: rgb(25, 126, 201);
+  --background-color: rgb(219, 226, 236);
+  --project-border-color: rgb(234, 166, 33);
+  --avatar-color: rgb(247, 195, 20);
+}
+
+/* latin-ext */
 @font-face {
   font-family: 'Roboto Flex';
-  src: url('RobotoFlex-Regular.woff2') format('woff2'),
-    url('RobotoFlex-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+  font-style: oblique 0deg 10deg;
+  font-weight: 100 1000;
+  font-stretch: 25% 151%;
+  src: url('RobotoFlex.woff2') format('woff2'),
+    url('RobotoFlex.woff') format('woff') format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+body {
+  font-family: 'Roboto Flex', system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+body {
+  background-color: pink;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 4fr;
+  gap: 10px;
+  height: 100vh;
+}
+
+aside.sidebar {
+  background-color: var(--theme-color);
+  grid-row: 1 / -1;
+}
+
+nav>ul>li {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  column-gap: 10px;
+  justify-items: center;
+  align-items: center;
+  font-weight: 700;
+  color: white;
+  margin-top: 10px;
+}
+
+nav>ul>li>img {
+  justify-self: end;
+  filter: invert(1);
+}
+
+nav>ul>li>a {
+  justify-self: start;
+}
+
+li.dashboard img {
+  width: 40px;
+}
+
+li img {
+  width: 20px;
+}
+
+header {
+  background-color: cornflowerblue;
+  display: grid;
+  grid-template-columns: 5fr 3fr;
+  gap: 10px;
+  /* align-items: center; */
+}
+
+header section {
+  background-color: azure;
+}
+
+section.search-bar {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  align-items: center;
+  column-gap: 10px;
+}
+
+section.search-bar input {
+  border: none;
+  border-radius: 15px;
+  background-color: var(--background-color);
+}
+
+section.user-profile {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  justify-items: end;
+  align-items: center;
+  column-gap: 20px;
+}
+
+section.user-profile img.notification {
+  width: 20px;
+}
+
+section.user-profile img.avatar {
+  width: 40px;
+}
+
+section.user-profile a {
+  font-weight: 700;
+}
+
+section.bio {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 10px;
+}
+
+section.bio img {
+  grid-row: 1 / -1;
+  align-self: center;
+}
+
+section.bio span {
+  font-weight: 700;
+}
+
+section.bio span.greeting {
+  font-size: 0.75rem;
+}
+
+section.bio span.username {
+  font-size: 1.10rem;
+}
+
+section.bio span.greeting {
+  align-self: end;
+}
+
+section.bio span.username {
+  align-self: start;
+}
+
+header section.actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  /* column-gap: 20px; */
+  justify-items: center;
+}
+
+header section.actions button {
+  border-radius: 20px;
+  height: 40%;
+  width: 75%;
+  border: none;
+  background-color: var(--theme-color);
+  color: white;
+  font-weight: 700;
+  font-size: 0.80rem;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  gap: 10px;
+}
+
+section.projects {
+  background-color: yellow;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 20px;
+  /* grid-template-rows: 1fr 1fr; */
+  gap: 10px;
+}
+
+span.title {
+  grid-column: 1 / -1;
+  font-weight: 600;
+}
+
+article.project {
+  background-color: darkgoldenrod;
+  border-radius: 5px;
+  border-left: 6px var(--project-border-color) solid;
+  display: grid;
+}
+
+section.project-actions {
+  justify-self: end;
+  align-self: end;
+}
+
+article.project img {
+  width: 20px;
+  display: inline-block;
+}
+
+section.feed {
+  background-color: coral;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: 20px 1fr 20px auto;
+  row-gap: 10px;
+}
+
+section.announcements article {
+  margin-bottom: 10px;
+}
+
+section.announcements,
+section.trending {
+  background-color: firebrick;
+  border-radius: 5px;
+}
+
+section.trending article {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 10px;
+  margin-bottom: 10px;
+}
+
+section.trending img {
+  width: 40px;
+  grid-row: 1 / -1
 }
